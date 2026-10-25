@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gác Đọc — Tiệm sách độc lập</title>
+<meta name="description" content="Gác Đọc — tiệm sách độc lập: kệ sách tuyển chọn, không gian đọc và góc cà phê sách. Trang mẫu, mọi giá là giá mẫu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Be+Vietnam+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Be Vietnam Pro", sans-serif; font-size: 17px; line-height: 1.65; color: #2E2620; background: #F6F0E4; }
+  h1, h2, h3 { font-family: "Playfair Display", serif; color: #2E2620; }
+  a { color: #8C3B2E; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  header { position: sticky; top: 0; z-index: 10; background: #F6F0E4; border-bottom: 1px solid #E8DCC8; }
+  .head { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-family: "Playfair Display", serif; font-size: 26px; font-weight: 700; color: #2E2620; text-decoration: none; }
+  .head nav a { margin-left: 20px; text-decoration: none; color: #2E2620; font-size: 15px; }
+  .head nav a:hover { color: #8C3B2E; }
+  .hero { position: relative; min-height: 100vh; display: flex; align-items: flex-end; overflow: hidden; }
+  .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16 / 9; }
+  .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 55%; background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0)); }
+  .hero-text { position: relative; z-index: 1; width: 100%; padding: 0 24px 72px; color: #F6F0E4; }
+  .hero-text h1 { font-size: 68px; font-weight: 700; color: #F6F0E4; }
+  .hero-text p { font-size: 19px; max-width: 560px; margin: 12px 0 24px; }
+  .btn { display: inline-block; padding: 13px 26px; border-radius: 6px; font-weight: 600; font-size: 16px; text-decoration: none; }
+  .btn-main { background: #8C3B2E; color: #F6F0E4; margin-right: 12px; }
+  .btn-sub { border: 2px solid #F6F0E4; color: #F6F0E4; background: transparent; }
+  section { padding: 100px 0; }
+  section.alt { background: #E8DCC8; }
+  h2 { font-size: 36px; font-weight: 600; margin-bottom: 8px; }
+  .sec-note { color: #6B5B4A; margin-bottom: 32px; }
+  .shelf { margin-bottom: 56px; }
+  .shelf:last-child { margin-bottom: 0; }
+  .shelf h3 { font-size: 24px; font-weight: 600; margin-bottom: 20px; color: #8C3B2E; }
+  .books { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .book { background: #FFFFFF; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(46,38,32,0.08); }
+  .book img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; }
+  .book div { padding: 16px 18px 20px; }
+  .book h4 { font-family: "Playfair Display", serif; font-size: 21px; font-weight: 600; }
+  .book p { font-size: 15px; color: #6B5B4A; }
+  .price { color: #8C3B2E; font-weight: 600; font-size: 16px; }
+  .space { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  .space img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; }
+  .events { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .event { background: #FFFFFF; border-radius: 8px; padding: 24px 26px; }
+  .event h3 { font-size: 22px; margin-bottom: 8px; }
+  .event p { font-size: 16px; }
+  .event .when { color: #8C3B2E; font-weight: 600; }
+  .forms { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  form { background: #FFFFFF; border-radius: 8px; padding: 28px; }
+  form h3 { font-size: 22px; margin-bottom: 18px; }
+  label { display: block; font-size: 15px; font-weight: 600; margin: 14px 0 6px; }
+  input { width: 100%; padding: 12px 14px; border: 1px solid #E8DCC8; border-radius: 6px; font-size: 16px; font-family: "Be Vietnam Pro", sans-serif; background: #F6F0E4; }
+  button { margin-top: 20px; background: #8C3B2E; color: #F6F0E4; border: none; padding: 13px 26px; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; font-family: "Be Vietnam Pro", sans-serif; }
+  .form-note, .demo-msg { font-size: 14px; color: #6B5B4A; margin-top: 14px; }
+  .demo-msg { color: #8C3B2E; font-weight: 600; }
+  footer { background: #2E2620; color: #F6F0E4; padding: 48px 0; }
+  footer h3 { color: #F6F0E4; font-size: 24px; margin-bottom: 10px; }
+  footer p { font-size: 15px; color: #E8DCC8; }
+  @media (max-width: 768px) {
+    .hero img { aspect-ratio: 4 / 5; }
+    .hero-text h1 { font-size: 40px; }
+    section { padding: 56px 0; }
+    h2 { font-size: 30px; }
+    .books, .space, .events, .forms { grid-template-columns: 1fr; }
+    .head nav { display: none; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap head">
+    <a class="logo" href="#">Gác Đọc</a>
+    <nav>
+      <a href="#ke-sach">Kệ sách</a>
+      <a href="#khong-gian">Không gian</a>
+      <a href="#lich">Lịch sinh hoạt</a>
+      <a href="#form">Đặt giữ sách</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1920&auto=format&fit=crop" alt="Kệ sách gỗ cao chạm trần dưới ánh đèn vàng ấm (ảnh mẫu)">
+  <div class="hero-text">
+    <div class="wrap">
+      <h1>Gác Đọc</h1>
+      <p>Một căn gác đầy sách giữa phố — nơi bạn chậm lại, chọn một cuốn sách và ngồi đọc thật lâu.</p>
+      <a class="btn btn-main" href="#form">Đặt giữ sách</a>
+      <a class="btn btn-sub" href="#form">Đăng ký thành viên</a>
+    </div>
+  </div>
+</div>
+
+<section id="ke-sach">
+  <div class="wrap">
+    <h2>Kệ sách tuyển chọn</h2>
+    <p class="sec-note">Mỗi cuốn dưới đây đều là sách mẫu trưng bày trên kệ — tất cả giá đều là giá mẫu.</p>
+
+    <div class="shelf">
+      <h3>Văn học</h3>
+      <div class="books">
+        <article class="book">
+          <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=900&auto=format&fit=crop" alt="Bìa sách mẫu chủ đề văn học (ảnh mẫu)">
+          <div><h4>Mùa thu trên gác</h4><p>Tiểu thuyết mẫu · <span class="price">Giá mẫu: 120.000đ</span></p></div>
+        </article>
+        <article class="book">
+          <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?q=80&w=900&auto=format&fit=crop" alt="Bìa sách mẫu chủ đề văn học (ảnh mẫu)">
+          <div><h4>Người kể chuyện phố cũ</h4><p>Tập truyện ngắn mẫu · <span class="price">Giá mẫu: 98.000đ</span></p></div>
+        </article>
+        <article class="book">
+          <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=900&auto=format&fit=crop" alt="Bìa sách mẫu chủ đề văn học (ảnh mẫu)">
+          <div><h4>Những lá thư chưa gửi</h4><p>Tiểu thuyết mẫu · <span class="price">Giá mẫu: 135.000đ</span></p></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="shelf">
+      <h3>Thiếu nhi</h3>
+      <div class="books">
+        <article class="book">
+          <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=900&auto=format&fit=crop" alt="Bìa sách mẫu chủ đề thiếu nhi (ảnh mẫu)">
+          <div><h4>Chú mèo đi học</h4><p>Truyện tranh mẫu · <span class="price">Giá mẫu: 68.000đ</span></p></div>
+        </article>
+        <article class="book">
+          <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=900&auto=format&fit=crop" alt="Bìa sách mẫu chủ đề thiếu nhi (ảnh mẫu)">
+          <div><h4>Khu vườn cổ tích</h4><p>Truyện mẫu · <span class="price">Giá mẫu: 75.000đ</span></p></div>
+        </article>
+        <article class="book">
+          <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=900&auto=format&fit=crop" alt="Bìa sách mẫu chủ đề thiếu nhi (ảnh mẫu)">
+          <div><h4>Bé và con diều</h4><p>Truyện mẫu · <span class="price">Giá mẫu: 59.000đ</span></p></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="shelf">
+      <h3>Sách nghệ thuật</h3>
+      <div class="books">
+        <article class="book">
+          <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=900&auto=format&fit=crop" alt="Bìa sách mẫu chủ đề nghệ thuật (ảnh mẫu)">
+          <div><h4>Màu của giấy cũ</h4><p>Nghệ thuật mẫu · <span class="price">Giá mẫu: 210.000đ</span></p></div>
+        </article>
+        <article class="book">
+          <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=900&auto=format&fit=crop" alt="Bìa sách mẫu chủ đề nghệ thuật (ảnh mẫu)">
+          <div><h4>Nghệ thuật in tay</h4><p>Nghệ thuật mẫu · <span class="price">Giá mẫu: 185.000đ</span></p></div>
+        </article>
+        <article class="book">
+          <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=900&auto=format&fit=crop" alt="Bìa sách mẫu chủ đề nghệ thuật (ảnh mẫu)">
+          <div><h4>Ảnh và ánh sáng</h4><p>Nhiếp ảnh mẫu · <span class="price">Giá mẫu: 240.000đ</span></p></div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="khong-gian" class="alt">
+  <div class="wrap">
+    <h2>Không gian đọc &amp; góc cà phê sách</h2>
+    <p class="sec-note">Ghế bành, cửa sổ và ánh sáng tự nhiên — cứ ngồi lại đọc, không vội.</p>
+    <div class="space">
+      <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=1200&auto=format&fit=crop" alt="Góc cà phê sách với ghế bành và cửa sổ (ảnh mẫu)">
+      <div>
+        <p>Chỗ ngồi đọc tại chỗ xen giữa các kệ sách: ghế bành, bàn gỗ và một ly cà phê nóng. Đồ uống phục vụ tại góc cà phê sách — cà phê phin, trà hoa và ca cao nóng, giá mẫu từ 35.000đ.</p>
+        <p style="margin-top:12px;">Menu đồ uống thật: [CẦN BỔ SUNG]. Giờ mở cửa và địa chỉ: [CẦN BỔ SUNG].</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="lich">
+  <div class="wrap">
+    <h2>Lịch sinh hoạt</h2>
+    <p class="sec-note">Lịch mẫu — lịch thật: [CẦN BỔ SUNG].</p>
+    <div class="events">
+      <article class="event">
+        <h3>Câu lạc bộ đọc</h3>
+        <p class="when">Tối thứ Bảy hàng tuần · 19:30 · tại góc đọc tầng gác</p>
+        <p>Cùng đọc và trò chuyện về một cuốn sách mỗi tuần. Vào cửa tự do cho thành viên.</p>
+      </article>
+      <article class="event">
+        <h3>Buổi ký tặng cuối tuần</h3>
+        <p class="when">Sáng Chủ nhật · 9:30 · tại không gian chính của tiệm</p>
+        <p>Gặp gỡ tác giả khách mời, ký tặng và trò chuyện về sách mới. Lịch tác giả thật: [CẦN BỔ SUNG].</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="form" class="alt">
+  <div class="wrap">
+    <h2>Đặt giữ sách &amp; đăng ký thành viên</h2>
+    <p class="sec-note">Form chỉ giao diện — dữ liệu chưa được gửi đi thật.</p>
+    <div class="forms">
+      <form id="form-giu-sach">
+        <h3>Đặt giữ sách</h3>
+        <label for="ten-sach">Tên sách</label>
+        <input id="ten-sach" type="text" placeholder="Ví dụ: Mùa thu trên gác" required>
+        <label for="ho-ten-1">Họ tên</label>
+        <input id="ho-ten-1" type="text" placeholder="Họ tên của bạn" required>
+        <label for="sdt">Số điện thoại</label>
+        <input id="sdt" type="tel" placeholder="Số điện thoại liên hệ" required>
+        <button type="submit">Gửi yêu cầu giữ sách</button>
+        <p class="form-note">Form chỉ giao diện — dữ liệu chưa được gửi đi thật.</p>
+        <p class="demo-msg" id="msg-giu-sach"></p>
+      </form>
+      <form id="form-thanh-vien">
+        <h3>Đăng ký thành viên</h3>
+        <label for="ho-ten-2">Họ tên</label>
+        <input id="ho-ten-2" type="text" placeholder="Họ tên của bạn" required>
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="Email của bạn" required>
+        <button type="submit">Đăng ký thành viên</button>
+        <p class="form-note">Form chỉ giao diện — dữ liệu chưa được gửi đi thật.</p>
+        <p class="demo-msg" id="msg-thanh-vien"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h3>Gác Đọc</h3>
+    <p>Địa chỉ: [CẦN BỔ SUNG] · Giờ mở cửa: [CẦN BỔ SUNG] · Liên hệ: [CẦN BỔ SUNG]</p>
+    <p style="margin-top:8px;">Trang mẫu — mọi giá là giá mẫu, thông tin thật đang chờ bổ sung.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('form-giu-sach').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('msg-giu-sach').textContent = 'Bản demo — form chưa gửi dữ liệu thật.';
+  });
+  document.getElementById('form-thanh-vien').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('msg-thanh-vien').textContent = 'Bản demo — form chưa gửi dữ liệu thật.';
+  });
+</script>
+</body>
+</html>
